@@ -8,8 +8,8 @@ public interface OwnerService {
     
     Owner findOwnerById(Integer id);
 	Collection<Owner> findAllOwners();
-	void saveOwner(Owner owner);
 	void deleteOwner(Owner owner) ;
+	Owner saveOwner(Owner owner);
 	Collection<Owner> findOwnerByLastName(String lastName);
 
 }

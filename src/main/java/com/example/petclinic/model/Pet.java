@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -53,24 +54,27 @@ public class Pet {
         return petId;
     }
 
-    public void setPetId(Integer petId) {
+    public Pet setPetId(Integer petId) {
         this.petId = petId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Pet setName(String name) {
         this.name = name;
+        return this;
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public Pet setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+        return this;
     }
 
 
@@ -78,24 +82,40 @@ public class Pet {
         return this.type;
     }
 
-    public void setType(PetType type) {
+    public Pet setType(PetType type) {
         this.type = type;
+        return this;
     }
 
     public Owner getOwner() {
         return this.owner;
     }
 
-    public void setOwner(Owner owner) {
+    public Pet setOwner(Owner owner) {
         this.owner = owner;
+        return this;
     }
 
     public Set<Visits> getVisits() {
         return this.visits;
     }
 
-    public void setVisits(Set<Visits> visits) {
+    public Pet setVisits(Set<Visits> visits) {
         this.visits = visits;
+        return this;
+    }
+
+    @JsonIgnore
+    protected Set<Visits> getVisitsInternal() {
+        if (this.visits == null) {
+            this.visits = new HashSet<>();
+        }
+        return this.visits;
+    }
+
+    public void addVisit(Visits visit) {
+        getVisitsInternal().add(visit);
+        visit.setPet(this);
     }
 
 }

@@ -1,9 +1,10 @@
-package com.example.petclinic.service;
+package com.example.petclinic.service.impl;
 
 import java.util.Collection;
 
 import com.example.petclinic.model.Owner;
 import com.example.petclinic.repository.OwnerRepository;
+import com.example.petclinic.service.OwnerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public void saveOwner(Owner owner) {
-        this.ownerRepository.save(owner);
+    public Owner saveOwner(Owner owner) {
+        return this.ownerRepository.save(owner);
     }
 
     @Override

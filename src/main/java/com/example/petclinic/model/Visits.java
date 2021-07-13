@@ -14,7 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +35,7 @@ public class Visits {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
@@ -58,32 +57,36 @@ public class Visits {
         return this.visitId;
     }
 
-    public void setVisitId(Integer visitId) {
+    public Visits setVisitId(Integer visitId) {
         this.visitId = visitId;
+        return this;
     }
 
     public Date getDate() {
         return this.date;
     }
 
-    public void setDate(Date date) {
+    public Visits setDate(Date date) {
         this.date = date;
+        return this;
     }
 
     public String getDescription() {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public Visits setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public Pet getPet() {
         return this.pet;
     }
 
-    public void setPet(Pet pet) {
+    public Visits setPet(Pet pet) {
         this.pet = pet;
+        return this;
     }
 
 }

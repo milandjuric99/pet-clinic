@@ -8,6 +8,6 @@ public interface PetService {
     
     Pet findPetById(Integer id);
 	Collection<Pet> findAllPets();
-	void savePet(Pet pet);
+	Pet savePet(Pet pet);
 	void deletePet(Pet pet);
 }

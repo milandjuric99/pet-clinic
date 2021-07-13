@@ -2,6 +2,7 @@ package com.example.petclinic.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -28,8 +30,9 @@ public class Vet {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "vet_specialties",
+        joinColumns = @JoinColumn(name = "vet_id"),
         inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<Specialty> specialties;
 
@@ -49,32 +52,36 @@ public class Vet {
         return this.vetId;
     }
 
-    public void setVetId(Integer vetId) {
+    public Vet setVetId(Integer vetId) {
         this.vetId = vetId;
+        return this;
     }
 
     public String getFirstName() {
         return this.firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public Vet setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return this.lastName;
     }
 
-    public void setLastName(String lastName) {
+    public Vet setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public Set<Specialty> getSpecialties() {
         return this.specialties;
     }
 
-    public void setSpecialties(Set<Specialty> specialties) {
+    public Vet setSpecialties(Set<Specialty> specialties) {
         this.specialties = specialties;
+        return this;
     }
 
 }

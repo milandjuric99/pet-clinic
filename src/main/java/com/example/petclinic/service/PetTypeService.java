@@ -8,6 +8,6 @@ public interface PetTypeService {
     
     PetType findPetTypeById(Integer petTypeId);
 	Collection<PetType> findAllPetTypes();
-	void savePetType(PetType petType);
+	PetType savePetType(PetType petType);
 	void deletePetType(PetType petType);
 }

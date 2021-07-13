@@ -23,7 +23,6 @@ public class PetType {
     public PetType() {
     }
 
-
     public PetType(Integer typeId, String name) {
         this.typeId = typeId;
         this.name = name;
@@ -34,16 +33,18 @@ public class PetType {
         return this.typeId;
     }
 
-    public void setTypeId(Integer typeId) {
+    public PetType setTypeId(Integer typeId) {
         this.typeId = typeId;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {
+    public PetType setName(String name) {
         this.name = name;
+        return this;
     }
 
 }

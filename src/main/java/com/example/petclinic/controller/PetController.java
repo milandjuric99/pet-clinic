@@ -4,7 +4,7 @@ import org.springframework.http.HttpHeaders;
 import java.util.Collection;
 
 import com.example.petclinic.model.Pet;
-import com.example.petclinic.service.PetServiceImpl;
+import com.example.petclinic.service.impl.PetServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -77,7 +77,7 @@ public class PetController {
         currentPet.setType(pet.getType());
         this.petService.savePet(currentPet);
         headers.setLocation(ucBuilder.path("/api/pets/{id}").buildAndExpand(pet.getPetId()).toUri());
-        return new ResponseEntity<Pet>(currentPet, HttpStatus.OK);
+        return new ResponseEntity<Pet>(currentPet, HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(value = "/{petId}", produces = "application/json")

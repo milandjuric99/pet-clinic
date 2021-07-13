@@ -3,7 +3,7 @@ package com.example.petclinic.controller;
 import java.util.Collection;
 
 import com.example.petclinic.model.PetType;
-import com.example.petclinic.service.PetTypeServiceImpl;
+import com.example.petclinic.service.impl.PetTypeServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "/api/pettype")
+@RequestMapping(value = "/api/pettypes")
 public class PetTypeController {
     
     @Autowired
@@ -74,8 +74,8 @@ public class PetTypeController {
             return new ResponseEntity<PetType>(HttpStatus.NOT_FOUND);
         }
         currentPetType.setName(petType.getName());
-        headers.setLocation(ucBuilder.path("api/pettype/{id}").buildAndExpand(petType.getTypeId()).toUri());
-        return new ResponseEntity<PetType>(currentPetType, headers, HttpStatus.OK);
+        headers.setLocation(ucBuilder.path("api/pettypes/{id}").buildAndExpand(petType.getTypeId()).toUri());
+        return new ResponseEntity<PetType>(currentPetType, headers, HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(value = "/{petTypeId}", produces = "application/json")

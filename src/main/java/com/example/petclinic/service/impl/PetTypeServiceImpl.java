@@ -1,9 +1,10 @@
-package com.example.petclinic.service;
+package com.example.petclinic.service.impl;
 
 import java.util.Collection;
 
 import com.example.petclinic.model.PetType;
 import com.example.petclinic.repository.PetTypeRepository;
+import com.example.petclinic.service.PetTypeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,8 @@ public class PetTypeServiceImpl implements PetTypeService {
     }
 
     @Override
-    public void savePetType(PetType petType) {
-        this.petTypeRepository.save(petType);
+    public PetType savePetType(PetType petType) {
+        return this.petTypeRepository.save(petType);
         
     }
 

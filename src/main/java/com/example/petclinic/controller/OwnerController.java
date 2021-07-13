@@ -4,7 +4,7 @@ import org.springframework.http.HttpHeaders;
 import java.util.Collection;
 
 import com.example.petclinic.model.Owner;
-import com.example.petclinic.service.OwnerServiceImpl;
+import com.example.petclinic.service.impl.OwnerServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
